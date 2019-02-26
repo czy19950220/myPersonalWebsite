@@ -1,0 +1,32 @@
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, textarea, select, optgroup, option, fieldset, legend, p, blockquote, th, td {
+  margin:0;
+  padding:0
+}
+fieldset, img {
+  border:0
+}
+ul, li, ol {
+  list-style:none
+}
+h1, h2, h3, h4, h5, h6 {
+  font-size:100%
+}
+html,body,#app{
+  height: 100%;
+  width: 100%;
+}
+/*index.vue*/
+/*region*/
+@keyframes floatOne {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3D(0, -20px, 0) scale(5) rotate(45deg);
+  }
+}
+/*endregion*/
