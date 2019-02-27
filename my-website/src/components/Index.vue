@@ -1,6 +1,9 @@
 <template>
-  <div id="index" @mousemove="mouse1()" @touchmove="">
-
+  <div id="index" @mousemove="mouse1()">
+    <el-button-group>
+      <el-button type="primary" icon="el-icon-arrow-left">上一页</el-button>
+      <el-button type="primary">下一页<i class="el-icon-arrow-right el-icon--right"></i></el-button>
+    </el-button-group>
   </div>
 </template>
 
@@ -16,6 +19,7 @@
         if (event==undefined){//
           return;
         }
+        event.preventDefault();
         let H = 0;
         let drawSize = 10;
         let drawType = '○';
