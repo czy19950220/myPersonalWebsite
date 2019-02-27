@@ -19,18 +19,17 @@
         if (event==undefined){//
           return;
         }
-        event.preventDefault();
         let H = 0;
         let drawSize = 10;
         let drawType = '○';
         let floatType = 'floatOne';
-        let xPos = event.offsetX;
-        let yPos = event.offsetY;
+        let xPos = event.clientX || event.pageX;
+        let yPos = event.clientY || event.pageY;
         $('#index').append(`<div class="draw"
-            style=" font-size: ${drawSize} px;position: fixed;
+            style="z-index: 10; font-size: ${drawSize} px;position: fixed;
             width: 1px;line-height: 1px;pointer-events: none;
             left:${xPos}px;top:${yPos}px;-webkit-animation:${floatType} .9s 1;
-            -moz-animation:${floatType} .9s 1;color:#33a0fc;">${drawType}</div>`);
+            -moz-animation:${floatType} .9s 1;color:#fff;">${drawType}</div>`);
         $('.draw').each(function () {
           var div = $(this);
           setTimeout(function () {
