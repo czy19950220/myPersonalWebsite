@@ -1,5 +1,5 @@
 <template>
-  <div id="index" @mousemove="mouse1()">
+  <div id="index" @mousemove="mouse1()" @touchmove="mouse2()">
     <el-row justify="center" class="elrow">
       <el-col :xs="24" :sm="12" :md="6" :lg="6" :xl="6">
         <div class="grid-content bg-purple">
@@ -106,6 +106,29 @@
       }
     },
     methods: {
+      mouse2(e){
+        //判断是否是IE浏览器
+        if ((!!window.ActiveXObject || "ActiveXObject" in window)) {
+          return;
+        }
+        let event = e || window.event;
+        let drawSize = 10;
+        let drawType = '○';
+        let floatType = 'floatOne';
+        let xPos = event.touches[0].pageX || event.originalEvent.targetTouches[0].pageX;
+        let yPos = event.touches[0].pageY || event.originalEvent.targetTouches[0].pageX;
+        $('#index').append(`<div class="draw"
+            style="z-index: 10; font-size: ${drawSize} px;position: fixed;
+            width: 1px;line-height: 1px;pointer-events: none;
+            left:${xPos}px;top:${yPos}px;-webkit-animation:${floatType} .9s 1;
+            -moz-animation:${floatType} .9s 1;color:#3a8ee6;">${drawType}</div>`);
+        $('.draw').each(function () {
+          var div = $(this);
+          setTimeout(function () {
+            $(div).remove();
+          }, 800);
+        });
+      },
       //鼠标光标设置
       mouse1(e) {
         //判断是否是IE浏览器
@@ -158,7 +181,8 @@
   .el-col {
     border-radius: 4px;
   }
-  .elrow{
+
+  .elrow {
     margin: auto;
   }
 
